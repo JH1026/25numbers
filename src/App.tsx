@@ -6,11 +6,11 @@ import StatsPage from './pages/StatsPage';
 function App() {
 
   const routerElements = createRoutesFromElements(
-    <Route>
+    <>
       <Route path="" element={<TopPage />} />
       <Route path="top" element={<TopPage />} />
       <Route path="stats" element={<StatsPage />} />
-    </Route>
+    </>
   );
 
   return <RouterProvider router={createHashRouter(routerElements)} />;
