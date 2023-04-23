@@ -1,5 +1,5 @@
 import './App.css'
-import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+import { Route, RouterProvider, createHashRouter, createRoutesFromElements } from 'react-router-dom';
 import TopPage from './pages/TopPage';
 import StatsPage from './pages/StatsPage';
 
@@ -7,12 +7,12 @@ function App() {
 
   const routerElements = createRoutesFromElements(
     <Route path="/" >
-      <Route index element={<TopPage />} />
+      <Route index path="top" element={<TopPage />} />
       <Route path="stats" element={<StatsPage />} />
     </Route>
   );
 
-  return <RouterProvider router={createBrowserRouter(routerElements)} />;
+  return <RouterProvider router={createHashRouter(routerElements)} />;
 }
 
 export default App
