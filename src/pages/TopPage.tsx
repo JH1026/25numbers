@@ -1,5 +1,7 @@
 import { useCallback, useState } from "react";
 import styled from "styled-components";
+import { addGameScore } from "../utils/storage";
+import { useNavigate } from "react-router-dom";
 
 const maxNumber = 25;
 
@@ -21,6 +23,7 @@ const getRandomizeNumbers = (): number[] => {
 }
 
 const TopPage = () => {
+  const navigate = useNavigate();
   const [displayNumbers, setDisplayNumbers] = useState<number[]>(numbers25);
   const [startTime, setStartTime] = useState<Date | undefined>();
   const [nextNumber, setNextNumber] = useState<number>(1);
@@ -32,10 +35,12 @@ const TopPage = () => {
       return;
     }
     if (nextNumber === num) {
-      if (num === maxNumber) {
+      if (num === 1) {
         const currentTime = new Date();
         const time = currentTime.getTime() - startTime.getTime();
+        addGameScore(time);
         alert(`Time: ${time/1000}秒`);
+        navigate('/stats');
         return;
       }
       setNextNumber((current) => current + 1);
