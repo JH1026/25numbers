@@ -35,10 +35,10 @@ const TopPage = () => {
       return;
     }
     if (nextNumber === num) {
-      if (num === 1) {
+      if (num === maxNumber) {
         const currentTime = new Date();
         const time = currentTime.getTime() - startTime.getTime();
-        addGameScore(time);
+        addGameScore(time/1000);
         alert(`Time: ${time/1000}秒`);
         navigate('/stats');
         return;
